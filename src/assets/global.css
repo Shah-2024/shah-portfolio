@@ -1,0 +1,152 @@
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --bg:          #f7f5f0;
+  --bg-alt:      #f0ede6;
+  --surface:     #ffffff;
+  --border:      #e2ddd6;
+  --border-dark: #c8c3ba;
+  --accent:      #1a1a1a;
+  --accent-warm: #8b6f47;
+  --text:        #1a1a1a;
+  --text-2:      #4a4540;
+  --text-3:      #8a847c;
+  --text-4:      #b8b2aa;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:   'DM Sans', sans-serif;
+  --nav-h:       72px;
+  --max-w:       1200px;
+  --pad:         6vw;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--text); color: var(--bg); }
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-dark); }
+
+/* ============================================================
+   SHARED UTILITIES
+   ============================================================ */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-dark {
+  background: var(--text);
+  color: var(--bg);
+}
+.btn-dark:hover { background: var(--text-2); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-dark);
+}
+.btn-outline:hover {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Tags */
+.tag {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  color: var(--text-3);
+  background: var(--surface);
+}
+
+/* Status badges */
+.badge {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+}
+.badge-warm {
+  background: rgba(139,111,71,0.1);
+  color: var(--accent-warm);
+}
+.badge-muted {
+  background: var(--bg-alt);
+  color: var(--text-3);
+}
+
+/* Fade up animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s ease both; }
+
+/* Page transition */
+.page-enter-active,
+.page-leave-active { transition: opacity 0.25s ease; }
+.page-enter-from,
+.page-leave-to { opacity: 0; }
+
+@media (max-width: 768px) {
+  :root { --pad: 5vw; }
+  .hide-mobile { display: none !important; }
+}
