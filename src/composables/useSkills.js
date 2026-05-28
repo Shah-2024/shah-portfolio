@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { supabase } from '../lib/supabaseClient'
+import { apiFetch } from '../lib/apiClient'
 
 const _skillGroups = ref([])
 let _fetched = false
@@ -7,7 +7,7 @@ let _fetched = false
 export function useSkills() {
   async function fetchSkills() {
     if (_fetched) return
-    const { data } = await supabase.from('skill_groups').select('*').order('sort_order')
+    const data = await apiFetch('/api/skills')
     if (data) { _skillGroups.value = data; _fetched = true }
   }
   return { skillGroups: _skillGroups, fetchSkills }
